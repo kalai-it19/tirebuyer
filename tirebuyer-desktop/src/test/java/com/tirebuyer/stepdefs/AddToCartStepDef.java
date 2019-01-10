@@ -122,11 +122,17 @@ public class AddToCartStepDef {
 
 	@When("user clicks on Deliver to a local installer radio button on the cart page")
 	public void user_clicks_on_Deliver_to_a_local_installer_radio_button_on_the_cart_page() {
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(CartAndDeliveryPage.deliveryMethodInstaller));
+		
 		driver.findElement(CartAndDeliveryPage.deliveryMethodInstaller).click();
 	}
 
 	@When("user selects installer number {int} from the local installer list")
 	public void user_selects_installer_number_from_the_local_installer_list(Integer itemNo) {
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(CartAndDeliveryPage.installerItemSelector(itemNo)));
+		
 		driver.findElement(CartAndDeliveryPage.installerItemSelector(itemNo)).click();
 	}
 
