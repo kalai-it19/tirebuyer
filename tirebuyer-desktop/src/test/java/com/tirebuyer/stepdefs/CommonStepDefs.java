@@ -26,7 +26,7 @@ public class CommonStepDefs {
 
 	@After
 	public void afterScenario() {
-		driver.close();
+		driver.quit();
 	}
 
 }
