@@ -1,7 +1,7 @@
 Feature: Launch TireBuyer.com and Create an order
 
 @SmokeTest
-Scenario: Add an item to cart and checkout
+Scenario: Add an item to cart and trf6checkout
 Given the user is on tirebuyer.com home page
 When user clicks 'Tires' tab and user chooses 'Shop by vehicle' section
 When user selects year as 2010
@@ -19,13 +19,8 @@ And user clicks on Save and continue button in the Delivery to Installer window.
 And user clicks on Continue to checkout button on the cart page
 And user clicks on Checkout with PayPal button on the Payment page
 And user gives any dummy credentials and clicks on Log in button
+	|UserName|Password|
+	|abc@gmail.com|dummy|
 Then user should receive an error message
 When user clicks on Cancel and return to TireBuyer.com link
 Then user should go back to tirebuyer.com
-
-@SmokeTest
-Scenario: Add an item to cart and click honda
-Given the user is on tirebuyer.com home page
-When user clicks 'Wheels' tab and user chooses 'Shop by vehicle' section
-When user selects year as 2007
-And user selects 'Honda' from Select Make section

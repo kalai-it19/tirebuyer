@@ -2,6 +2,8 @@ package com.tirebuyer.stepdefs;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.NoSuchElementException;
@@ -20,6 +22,7 @@ import com.tirebuyer.util.WebDriverUtil;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.cucumber.datatable.DataTable;
 
 public class AddToCartStepDef {
 
@@ -154,17 +157,17 @@ public class AddToCartStepDef {
 	}
 
 	@When("user gives any dummy credentials and clicks on Log in button")
-	public void user_gives_any_dummy_credentials_and_clicks_on_Login_button() throws InterruptedException {
+	public void user_gives_any_dummy_credentials_and_clicks_on_Login_button(DataTable dt) throws InterruptedException {
 		
 		Thread.sleep(5000);
-		
+		List<Map<String, String>> loginDetails= dt.asMaps();
 		WebDriverUtil.flipWindow(driver);
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.elementToBeClickable(PayPalLoginPage.email));
 
-		driver.findElement(PayPalLoginPage.email).sendKeys("abc@gmail.com");
+		driver.findElement(PayPalLoginPage.email).sendKeys(loginDetails.get(0).get("UserName"));
 		driver.findElement(PayPalLoginPage.button_Next).click();
-		driver.findElement(PayPalLoginPage.button_Password).sendKeys("12345");
+		driver.findElement(PayPalLoginPage.button_Password).sendKeys(loginDetails.get(0).get("Password"));
 		driver.findElement(PayPalLoginPage.button_Login).click();
 	}
 
