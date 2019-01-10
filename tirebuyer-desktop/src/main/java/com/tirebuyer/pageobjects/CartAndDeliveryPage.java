@@ -11,6 +11,6 @@ public class CartAndDeliveryPage {
 	public static By button_ContinueToCheckout = By.className("continue-to-checkout");
 	
 	public static By installerItemSelector(Integer itemNo) {
-		return By.xpath("//div[@id='InstallerList']//div[@data-installer-index='"+(itemNo.intValue() -1)+"']//div[@class='selector-radio']");
+		return By.xpath("//div[@id='InstallerList']//div[@data-installer-index='"+(itemNo-1)+"']//div[@class='selector-radio']");
 	}
 }

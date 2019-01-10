@@ -11,7 +11,7 @@ import cucumber.api.java.Before;
 public class CommonStepDefs {
 
 	static {
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\E329222\\Desktop\\VS2017\\Selenium\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Saba\\Downloads\\chromedriver_win32\\chromedriver.exe");
 	}
 	
 	public static WebDriver driver = null;
