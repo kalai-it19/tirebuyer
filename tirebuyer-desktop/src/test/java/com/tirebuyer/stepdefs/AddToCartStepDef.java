@@ -27,30 +27,11 @@ import io.cucumber.datatable.DataTable;
 public class AddToCartStepDef {
 
 	WebDriver driver = CommonStepDefs.driver;
-
-	public void clearAds() {
-		WebDriverWait wait = new WebDriverWait(driver, 5);
-		try {
-			wait.until(ExpectedConditions.presenceOfElementLocated(HomePage.adSelector));
-			
-			driver.findElement(HomePage.adSelector).click();
-		} catch (Exception e) {
-		}
-
-		try {
-			Thread.sleep(5000);
-			
-			driver.findElement(HomePage.close_flyInAd).click();
-			WebDriverUtil.clickAsJavascript(driver, HomePage.close_flyInAd);
-		} catch (Exception e) {
-		}
-	}
-
+	
 	@Given("the user is on tirebuyer.com home page")
 	public void the_user_is_on_tirebuyer_com_home_page() {
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-
 		driver.get("https://www.tirebuyer.com");
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
@@ -67,7 +48,6 @@ public class AddToCartStepDef {
 	@When("user selects year as {int}")
 	public void user_selects_year_as(Integer year) throws InterruptedException {
 		WebDriverUtil.clickAsJavascript(driver, HomePage.launchYearSelector);
-
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.presenceOfElementLocated(HomePage.getYearSelector(year)));
 		driver.findElement(HomePage.getYearSelector(year)).click();
@@ -185,6 +165,23 @@ public class AddToCartStepDef {
 	@Then("user should go back to tirebuyer.com")
 	public void user_should_go_back_to_tirebuyer_com() {
 		assertTrue(driver.getCurrentUrl().contains("tirebuyer.com"));
+	}
+	public void clearAds() {
+		WebDriverWait wait = new WebDriverWait(driver, 5);
+		try {
+			wait.until(ExpectedConditions.presenceOfElementLocated(HomePage.adSelector));
+			
+			driver.findElement(HomePage.adSelector).click();
+		} catch (Exception e) {
+		}
+
+		try {
+			Thread.sleep(5000);
+			
+			driver.findElement(HomePage.close_flyInAd).click();
+			WebDriverUtil.clickAsJavascript(driver, HomePage.close_flyInAd);
+		} catch (Exception e) {
+		}
 	}
 
 }

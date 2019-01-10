@@ -1,4 +1,4 @@
-Feature: Launch TireBuyer.com and Create an order
+Feature: As a user, I have to launch tirebuyer.com and Add an utem to cart, So that i can add create an order
 
 @SmokeTest
 Scenario: Add an item to cart and trf6checkout
